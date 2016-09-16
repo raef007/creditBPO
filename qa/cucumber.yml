@@ -1,0 +1,10 @@
+# List of profile you can pass when invoking Cucumber 
+# Ex : 
+#   $ cucumber --profile=phantomjs
+#
+# For Info : FACILGO_BASE_URL refer to #{@base_url} in the step.rb file
+
+default: --require features --color BROWSER_TYPE=chrome FACILGO_BASE_URL=http://128.199.203.18
+firefox: --require features --color BROWSER_TYPE=firefox FACILGO_BASE_URL=http://128.199.203.18
+chrome: --require features --color BROWSER_TYPE=chrome FACILGO_BASE_URL=http://128.199.203.18
+phantomjs: --require features --color BROWSER_TYPE=phantomjs FACILGO_BASE_URL=http://128.199.203.18

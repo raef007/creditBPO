@@ -1,0 +1,10 @@
+# Venzee Gemfile
+source 'http://rubygems.org'
+
+gem 'cucumber'
+gem 'selenium-webdriver'
+gem 'rspec-expectations'
+gem 'ruby-gmail'
+gem 'relish'
+#Add gem cucumber -v 1.3.17 
+#Add gem rails
