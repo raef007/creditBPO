@@ -16,7 +16,7 @@ end
 When(/^I type (.*) data into (.*)$/) do |data,textfield|
 	if data.include?("blank")
        sleep 1
-       @browser.find_element(:xpath, "//input[@name='#{textfield}']").send_keys " "
+       @browser.find_element(:xpath, "//input[@name='#{textfield}']").clear
    else
    	@browser.find_element(:xpath, "//input[@name='#{textfield}']").send_keys data
    end

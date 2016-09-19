@@ -32,7 +32,11 @@ Open a command line and install some gem
     $ gem install cucumber -v 1.3.17
     $ gem install bundler
 
-Download the shared project folder.
+Clone the git repo from Venzee/QA
+
+    $ git clone https://github.com/venzee/qa.git
+
+Go in the repo and install Bundle + Rails
 
     $ cd qa
     $ bundle install
