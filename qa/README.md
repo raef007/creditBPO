@@ -34,13 +34,12 @@ Open a command line and install some gem
 
 Clone the git repo from Venzee/QA
 
-    $ git clone https://github.com/venzee/qa.git
+    $ git clone the Credit BPO Repo
 
 Go in the repo and install Bundle + Rails
 
     $ cd qa
     $ bundle install
-    $ gem install rails
 
  Download the Chrome Web driver here : https://sites.google.com/a/chromium.org/chromedriver/downloads
  - Unzip it here it on your C:\Program Files\ChromeDriver

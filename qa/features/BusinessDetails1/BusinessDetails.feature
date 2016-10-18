@@ -220,7 +220,7 @@ Background:
   Then I select I am applying independently item from is_independent 
   And I hit the submit check mark
   
-  @Data-test
+  @Data-test @adfafsdfs
   Scenario: Test Affiliates / Subsidiaries name
   When I click on affiliates.related_company_name data
   And I type blank data into related_company_name
@@ -501,3 +501,21 @@ Background:
   Then I should get error The Insured Amount must be a number
   And I type 20000 data into insured_amount 
   And I hit the submit check mark
+  
+  @Data-test @adajdajgjagjsja
+  Scenario: Add Affiliates / Subsidiaries 
+  When I click on link Add Affiliates / Subsidiaries
+  And I enter random Name value at field related_company_name[0]
+  And I enter random Text value at field related_company_address1[0]
+  And I enter random Text value at field related_company_address2[0]
+  And I select Abra item from related_company_province[0]
+  And I select Bucay item from related_company_cityid[0]
+  And I enter random Text value at field related_company_phone[0]
+  And I enter random Email value at field related_company_email[0]
+  Then I clicked Save button of table affiliates-list-cntr
+  
+  @Data-test @adajdajgjagjsja
+  Scenario: Delete newly created Affiliates / Subsidiaries
+  
+  And I delete newly created Affiliate
+  And I confirm delete

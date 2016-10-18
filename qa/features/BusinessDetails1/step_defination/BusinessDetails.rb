@@ -1,5 +1,7 @@
+$name
 Given "I reach at Business Details 1 screen" do
-    @browser.find_element(:css, ".img-responsive").click
+    #@browser.find_element(:css, ".img-responsive").click
+	@browser.find_element(:xpath, "//div[contains(text(),'574 - The Stark Industries')]").click
     end  
 
 Given "I hit the submit check mark" do 
@@ -23,6 +25,7 @@ When(/^I type (.*) data into (.*)$/) do |data,textfield|
 end
 
 When (/I select (.*) item from (.*)/) do |data,field|
+sleep 2
 	if data.include?("blank")
       option = Selenium::WebDriver::Support::Select.new(@browser.find_element(:xpath => "//select[@name='#{field}']"))
       option.select_by(:text, "Choose here")
@@ -30,8 +33,57 @@ When (/I select (.*) item from (.*)/) do |data,field|
   	option = Selenium::WebDriver::Support::Select.new(@browser.find_element(:xpath => "//select[@name='#{field}']"))
     option.select_by(:text, data)
   end	
+  sleep 2
 end
 
 Then(/^I should get error (.*)$/) do |error|
   find_text(error)
+end
+
+Then (/^I click on link (.*)$/) do |link|
+@browser.find_element(:xpath,"//a[text()='#{link}']").click
+sleep 1
+end
+
+Then (/^I enter random (.*) value at field (.*)$/) do |value,field_name|
+sleep 1
+	if value.include?("Text")
+	 value1 = "Text" + rand(10000).to_s
+	 option =@browser.find_element(:xpath => "//input[@name='#{field_name}']")
+	 option.send_keys value1
+	elsif value.include?("Email")
+	value2 = "email_address" + rand(10000).to_s + "@yopmail.com"
+	option =@browser.find_element(:xpath => "//input[@name='#{field_name}']")
+	option.send_keys value2
+	elsif value.include?("Name")
+	$name = "Name" + rand(10000).to_s
+	option = @browser.find_element(:xpath => "//input[@name='#{field_name}']")
+	option.send_keys $name
+	elsif 
+	option = @browser.find_element(:xpath => "//input[@name='#{field_name}']")
+	option.send_keys value
+	end
+sleep 1
+end
+
+Then (/^I clicked (.*) button of table (.*)$/) do |button,table|
+sleep 1
+@browser.find_element(:xpath,"//div[@id='#{table}']//input[@value='#{button}']").click
+end
+
+Then "I delete newly created Affiliate" do
+sleep 2
+	if (name = @browser.find_element(:xpath => "//span[contains(text(),'#{$name}')]"))
+		count = @browser.find_elements(:xpath => "//span[@data-name='affiliates.related_company_name']").size
+		multiple = count*9
+		@browser.find_element(:xpath => "//div[@class='read-only reload-affiliates']//span[#{multiple}]//a").click
+	else
+	@browser.find_element(:xpath => "//span[@data-name='affiliates.related_company_name']")
+	end
+	sleep 1
+end
+
+Then "I confirm delete" do
+sleep 2
+@browser.find_element(:xpath => "//span[text()='Yes']").click
 end
