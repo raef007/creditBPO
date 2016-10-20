@@ -490,7 +490,7 @@ Background:
   And I type TYPE 2 data into insurance_type 
   And I hit the submit check mark
   
-  @Data-test @testtt
+  @Data-test 
   Scenario: Test Insured Amount
   When I click on insurance.insured_amount data
   And I type blank data into insured_amount
@@ -502,9 +502,11 @@ Background:
   And I type 20000 data into insured_amount 
   And I hit the submit check mark
   
-  @Data-test @adajdajgjagjsja
+  @Data-test @testingupload
   Scenario: Add Affiliates / Subsidiaries 
   When I click on link Add Affiliates / Subsidiaries
+  Then I clicked Save button of table affiliates-list-cntr
+  Then I Verify the validatoin on the page for mendatory fileds
   And I enter random Name value at field related_company_name[0]
   And I enter random Text value at field related_company_address1[0]
   And I enter random Text value at field related_company_address2[0]
@@ -514,8 +516,20 @@ Background:
   And I enter random Email value at field related_company_email[0]
   Then I clicked Save button of table affiliates-list-cntr
   
-  @Data-test @adajdajgjagjsja
+  @Data-test
   Scenario: Delete newly created Affiliates / Subsidiaries
   
   And I delete newly created Affiliate
   And I confirm delete
+  
+  @Data-test
+  Scenario: Upload SEC General Information Sheet file
+  When I click on link Upload SEC General Information Sheet
+  And I choose DBM PS FS Input Template edited (1).xlsx file of SEC General Information Sheet
+  Then I save uplaoded sheet
+  
+  @Data-test
+  Scenario: Upload Utility files
+  When I click on link Utility Bills
+  And I choose SmartBill.pdf file of Utility Billes1
+  And I clicked Save button of table expand-utility-bills-form
