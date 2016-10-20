@@ -41,7 +41,7 @@ Then(/^I should get error (.*)$/) do |error|
 end
 
 Then (/^I click on link (.*)$/) do |link|
-@browser.find_element(:xpath,"//a[text()='#{link}']").click
+@browser.find_element(:xpath,"//a[contains(text(),'#{link}')]").click
 sleep 1
 end
 
@@ -87,3 +87,42 @@ Then "I confirm delete" do
 sleep 2
 @browser.find_element(:xpath => "//span[text()='Yes']").click
 end
+
+Then "I Verify the validatoin on the page for mendatory fileds" do
+sleep 2
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Company Name field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Company Address field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The City field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Province field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Zipcode field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Company Phone field is required']")
+@browser.find_element(:xpath,"//form[@id='affiliates-expand-form']//div[@role='alert' and text()='The Email field is required']")
+end
+
+Then (/^I choose (.*) file of (.*)$/) do |x,y|
+sleep 3
+	require 'fileutils'
+	path = File.absolute_path("files/#{x}")
+	my_dir = Dir[path]
+	dest_folder = path[0,2]
+	file = dest_folder+"\\#{x}"
+	if File.exist?(file)
+		#DO NOTHING
+	else
+		FileUtils.cp(my_dir, dest_folder)
+	end
+	sleep 2
+	f  = dest_folder+"\\#{x}"
+	if y.include?("SEC General Information Sheet")
+	@browser.find_element(:xpath,"//input[@name='editable-file-uploader']").send_keys f
+	elsif y.include?("Utility Billes1")
+	@browser.find_element(:xpath,"//div[@id='upload-field-cntr']/div[2]//input[@name='utility_bills[]']").send_keys f
+	end
+	sleep 5
+end
+
+Then "I save uplaoded sheet" do
+sleep 2
+@browser.find_element(:xpath,"//*[@id='modal-file-uploader']//div[@class='modal-footer']//button[@type='submit']").click
+end
+
