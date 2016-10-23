@@ -12,10 +12,6 @@ sleep 1
  end
 end
 
-Then (/^User choose (.*) button$/) do |button|
-@browser.find_element(:xpath => "//input[@value='#{button}']").click
-end
-
 Then "I delete newly created Risk Assessment" do
 sleep 2
 	@browser.find_element(:xpath => "//a[@data-reload='.reload-ra']").click
