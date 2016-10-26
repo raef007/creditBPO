@@ -32,3 +32,9 @@ sleep 2
 	@browser.find_element(:xpath => "//a[@data-reload='.#{reload}']").click
 	sleep 1
 end
+
+Then (/^I click delete owner details (.*)$/) do |delete_link|
+sleep 2
+	@browser.find_element(:xpath => "//a[@class='navbar-link delete-info #{delete_link}']").click
+	sleep 1
+end

@@ -163,13 +163,13 @@ Feature: Creating scripts for Key manager
     And I select Graduated item from educ_degree[1]
     Then I save Pop Modal form
     
-    @TestSpouseBusiness
-    Scenario: Adding Owner Other Business
+    @TestOwner
+    Scenario: Adding Spouse Other Business
 	And I reach at Owner Details screen
 	Then I click Owner's name
     Then on slider I click button Spouse Personal Details
     Then on slider I click button Spouse: Other Business Currently Managed/Owned
-    Then I click and wait on link Add Other Business Currently Managed/Owned
+    Then I click and wait on link Add Other Business Currently Managed/Owned (Spouse)
     Then I save Pop Modal form
     
     And I enter random Text value at field bus_name[0]
@@ -178,7 +178,7 @@ Feature: Creating scripts for Key manager
     Then I save Pop Modal form
     
     @TestOwner
-    Scenario: Adding Owner Educational Background
+    Scenario: Adding Spouse Educational Background
 	And I reach at Owner Details screen
 	Then I click Owner's name
     Then on slider I click button Spouse Personal Details
@@ -189,3 +189,60 @@ Feature: Creating scripts for Key manager
     And I enter random Text value at field school_name[1]
     And I select Graduated item from educ_degree[1]
     Then I save Pop Modal form
+    
+    @TestOwner
+    Scenario: Deleting Personal Loans
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Owner Details
+    And I click delete owner details delete-loans
+    And I confirm delete
+    
+    @TestOwner
+    Scenario: Deleting Key Manager
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Key Manager
+    And I click delete owner details delete-keymanager
+    And I confirm delete
+    
+    @TestOwner
+    Scenario: Deleting Owner Business
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Other Business Currently Managed/Owned
+    And I click delete owner details delete-business
+    And I confirm delete
+    
+    @TestOwner
+    Scenario: Deleting Owner Education
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Educational Background
+    And I click delete owner details delete-education
+    And I confirm delete
+    
+    @TestOwner
+    Scenario: Deleting Spouse Business
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Spouse Personal Details
+    Then on slider I click button Spouse: Other Business Currently Managed/Owned
+    And I click delete owner details delete-sbusiness
+    And I confirm delete
+    
+    @TestOwner
+    Scenario: Deleting Spouse Education
+	And I reach at Owner Details screen
+    Then I click Owner's name
+    
+    Then on slider I click button Spouse Personal Details
+    Then on slider I click button Spouse Educational Background
+    And I click delete owner details delete-seducation
+    And I confirm delete
+    
