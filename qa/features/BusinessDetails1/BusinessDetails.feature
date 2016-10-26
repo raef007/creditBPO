@@ -516,7 +516,7 @@ Background:
   And I enter random Email value at field related_company_email[0]
   Then I clicked Save button of table affiliates-list-cntr
   
-  @Data-test
+  @Data-test @testingupload
   Scenario: Delete newly created Affiliates / Subsidiaries
   
   And I delete newly created Affiliate

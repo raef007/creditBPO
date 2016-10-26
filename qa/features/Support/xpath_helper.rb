@@ -8,10 +8,11 @@ def sclick_links(span)
 @browser.find_element(:xpath,"//span[contains(text(),'#{span}')]").click
 end
 
- #def Click_ViaJavaScript(locator)
-  #      //WebElemenclick_linkt el = getWebDriver().findElement(ByLocator(locator));
-	###  js.executeScript("arguments[0].click();",el);
-    #end
+ def Click_ViaJavaScript(locator)
+        WebElemenclick_linkt 
+		el = getWebDriver().findElement(ByLocator(locator));
+	  js.executeScript("arguments[0].click();",el);
+    end
 
 def find_label(label)
 	@browser.find_element(:xpath, "//label[contains(text(),'#{label}')]")
