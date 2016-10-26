@@ -61,3 +61,9 @@ Feature: Creating scripts for Key manager
     And I type 800000 data into others_estimated_value
     
     Then I save Pop Modal form
+    
+    @TestECF
+    Scenario: Delete Existing Credit Facility
+    And I reach at Existing Credit Facilities screen
+    And I delete record reload-ecf
+    And I confirm delete

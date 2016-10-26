@@ -51,3 +51,9 @@ Feature: Creating scripts for Key manager
     And I type 800000 data into others_estimated_value
     
     Then I save Pop Modal form
+    
+    @TestRCL
+    Scenario: Delete Required Credit Facilities
+    And I reach at Required Credit Line screen
+    And I delete record reload-rcl
+    And I confirm delete
