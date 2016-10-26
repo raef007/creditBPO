@@ -2,6 +2,7 @@ $name
 Given "I reach at Business Details 1 screen" do
     #@browser.find_element(:css, ".img-responsive").click
 	@browser.find_element(:xpath, "//div[contains(text(),'574 - The Stark Industries')]").click
+	#@browser.execute_script("arguments[0].click()", el)
     end  
 
 Given "I hit the submit check mark" do 
@@ -11,7 +12,8 @@ Given "I hit the submit check mark" do
 
 
 When(/^I click on (.*) data$/) do |companyname|
-  @browser.find_element(:xpath, "//span[contains(@data-name, '#{companyname}')]").click
+  el = @browser.find_element(:xpath, "//span[contains(@data-name, '#{companyname}')]")
+  @browser.execute_script("arguments[0].click()", el)
   sleep 4
 end
 
@@ -41,7 +43,8 @@ Then(/^I should get error (.*)$/) do |error|
 end
 
 Then (/^I click on link (.*)$/) do |link|
-@browser.find_element(:xpath,"//a[contains(text(),'#{link}')]").click
+el = @browser.find_element(:xpath => "//a[contains(text(),'#{link}')]")
+@browser.execute_script("arguments[0].click()", el)
 sleep 1
 end
 
@@ -72,13 +75,16 @@ sleep 1
 end
 
 Then "I delete newly created Affiliate" do
-sleep 2
+sleep 8
 	if (name = @browser.find_element(:xpath => "//span[contains(text(),'#{$name}')]"))
+	sleep 2
 		count = @browser.find_elements(:xpath => "//span[@data-name='affiliates.related_company_name']").size
 		multiple = count*9
-		@browser.find_element(:xpath => "//div[@class='read-only reload-affiliates']//span[#{multiple}]//a").click
+		el = @browser.find_element(:xpath => "//div[@class='read-only reload-affiliates']//span[#{multiple}]//a")
+		@browser.execute_script("arguments[0].click()", el)
 	else
 	@browser.find_element(:xpath => "//span[@data-name='affiliates.related_company_name']")
+	
 	end
 	sleep 1
 end
