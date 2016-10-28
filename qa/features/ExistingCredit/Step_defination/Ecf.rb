@@ -13,11 +13,13 @@ sleep 1
 end
 
 Then (/^I click and wait on link (.*)$/) do |link|
-@browser.find_element(:xpath,"//a[contains(text(),'#{link}')]").click
+el = @browser.find_element(:xpath,"//a[contains(text(),'#{link}')]")
+@browser.execute_script("arguments[0].click()", el)
 sleep 5
 end
 
 Then "I save Pop Modal form" do
 sleep 2
-@browser.find_element(:xpath,"//*[@id='modal-add-info']//div[@class='modal-footer']//button[@type='submit']").click
+el = @browser.find_element(:xpath,"//*[@id='modal-add-info']//div[@class='modal-footer']//button[@type='submit']")
+@browser.execute_script("arguments[0].click()", el)
 end

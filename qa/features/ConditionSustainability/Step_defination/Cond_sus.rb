@@ -14,18 +14,21 @@ end
 
 Then "I delete newly created Risk Assessment" do
 sleep 2
-	@browser.find_element(:xpath => "//a[@data-reload='.reload-ra']").click
-	sleep 1
+	el = @browser.find_element(:xpath => "//a[@data-reload='.reload-ra']")
+    @browser.execute_script("arguments[0].click()", el)
+	sleep 2
 end
 
 Then "I delete newly created Growth Potential" do
 sleep 2
-	@browser.find_element(:xpath => "//a[@data-reload='.reload-rev-growth']").click
-	sleep 1
+	el = @browser.find_element(:xpath => "//a[@data-reload='.reload-rev-growth']")
+    @browser.execute_script("arguments[0].click()", el)
+	sleep 2
 end
 
 Then "I delete newly created Investment Expansion" do
 sleep 2
-	@browser.find_element(:xpath => "//a[@data-reload='.reload-phpm']").click
-	sleep 1
+	el = @browser.find_element(:xpath => "//a[@data-reload='.reload-phpm']")
+    @browser.execute_script("arguments[0].click()", el)
+	sleep 2
 end
