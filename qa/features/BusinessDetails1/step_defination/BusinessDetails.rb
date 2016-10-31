@@ -3,7 +3,7 @@ Given "I reach at Business Details 1 screen" do
     #@browser.find_element(:css, ".img-responsive").click
 	@browser.find_element(:xpath, "//div[contains(text(),'574 - The Stark Industries')]").click
 	#@browser.execute_script("arguments[0].click()", el)
-    end  
+    end 
 
 Given "I hit the submit check mark" do 
 	@browser.find_element(:id, 'submit-editable').click
@@ -12,8 +12,7 @@ Given "I hit the submit check mark" do
 
 
 When(/^I click on (.*) data$/) do |companyname|
-  el = @browser.find_element(:xpath, "//span[contains(@data-name, '#{companyname}')]")
-  @browser.execute_script("arguments[0].click()", el)
+  @browser.find_element(:xpath, "//span[contains(@data-name, '#{companyname}')]").click
   sleep 4
 end
 
@@ -43,8 +42,7 @@ Then(/^I should get error (.*)$/) do |error|
 end
 
 Then (/^I click on link (.*)$/) do |link|
-el = @browser.find_element(:xpath => "//a[contains(text(),'#{link}')]")
-@browser.execute_script("arguments[0].click()", el)
+@browser.find_element(:xpath,"//a[text()='#{link}']").click
 sleep 1
 end
 
@@ -75,16 +73,13 @@ sleep 1
 end
 
 Then "I delete newly created Affiliate" do
-sleep 8
+sleep 2
 	if (name = @browser.find_element(:xpath => "//span[contains(text(),'#{$name}')]"))
-	sleep 2
 		count = @browser.find_elements(:xpath => "//span[@data-name='affiliates.related_company_name']").size
 		multiple = count*9
-		el = @browser.find_element(:xpath => "//div[@class='read-only reload-affiliates']//span[#{multiple}]//a")
-		@browser.execute_script("arguments[0].click()", el)
+		@browser.find_element(:xpath => "//div[@class='read-only reload-affiliates']//span[#{multiple}]//a").click
 	else
 	@browser.find_element(:xpath => "//span[@data-name='affiliates.related_company_name']")
-	
 	end
 	sleep 1
 end
@@ -123,6 +118,8 @@ sleep 3
 	@browser.find_element(:xpath,"//input[@name='editable-file-uploader']").send_keys f
 	elsif y.include?("Utility Billes1")
 	@browser.find_element(:xpath,"//div[@id='upload-field-cntr']/div[2]//input[@name='utility_bills[]']").send_keys f
+	elsif y.include?("Certification")
+	@browser.find_element(:xpath,"//input[@name='certification_doc[0]']").send_keys f
 	end
 	sleep 5
 end
@@ -130,5 +127,11 @@ end
 Then "I save uplaoded sheet" do
 sleep 2
 @browser.find_element(:xpath,"//*[@id='modal-file-uploader']//div[@class='modal-footer']//button[@type='submit']").click
+end
+
+Then "I delete newly created Products" do
+	sleep 2
+	@browser.find_element(:xpath => "//div[@class='servicesoffers']//div[2]//a").click
+	sleep 1
 end
 

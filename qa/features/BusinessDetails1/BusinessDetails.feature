@@ -533,3 +533,98 @@ Background:
   When I click on link Utility Bills
   And I choose SmartBill.pdf file of Utility Billes1
   And I clicked Save button of table expand-utility-bills-form
+  
+    @Data-test 
+  Scenario: Add Products / Services 
+  When I click on link Add Products/Services Offered
+  And I clicked Save button of table offers-list-cntr
+  Then I should get error The Products/Services Offered field is required
+  And I enter random Text value at field servicesoffer_name[0]
+  And I enter random Text value at field servicesoffer_targetmarket[0]
+  And I type 100 data into servicesoffer_share_revenue[0]
+  And I select Year-Round item from servicesoffer_seasonality[0]
+  Then I clicked Save button of table offers-list-cntr
+  
+  @Data-test
+  Scenario: Delete newly created Products / Services 
+  And I delete newly created Products
+  And I confirm delete
+  
+  @Data-test
+  Scenario: Add Main Location/s
+  When I click on link Add Main Location/s
+  And I clicked Save button of table main-loc-list-cntr
+  Then I should get error The Size of Premises (square meters) field is required
+  And I type 100 data into location_size[0]
+  And I select Owned item from location_type[0]
+  And I select Commercial area item from location_map[0]
+  And I select Administrative office item from location_used[0]
+  Then I clicked Save button of table main-loc-list-cntr 
+  
+  @Data-test
+  Scenario: Add Branch(es)
+  When I click on link Add Branch(es)
+  And I clicked Save button of table branches-list-cntr
+  Then I should get error The Branch Address field is required
+  And I enter random Text value at field branch_address[0]
+  And I select Owned item from branch_owned_leased[0]
+  And I enter random Text value at field branch_contact_person[0]
+  And I enter random Text value at field branch_phone[0]
+  And I enter random Email value at field branch_email[0]
+  And I enter random Text value at field branch_job_title[0]
+  Then I clicked Save button of table branches-list-cntr
+  
+  @Data-test 
+  Scenario: Add Certification / Accreditation / Tax Exemptions
+  When I click on link Add Certification / Accreditation / Tax Exemptions
+  And I clicked Save button of table certifications-list-cntr
+  Then I should get error Please choose a Certification
+  And I select Board of Investments (BOI) item from certification_details[0]
+  And I enter random Text value at field certification_reg_no[0]
+  And I type 2016-09-05 data into certification_reg_date[0]
+  And I choose sample.pdf file of Certification
+  Then I clicked Save button of table certifications-list-cntr
+  
+  @Data-test 
+  Scenario: Add Insurance Coverage
+  When I click on link Add Insurance Coverage
+  And I clicked Save button of table insurance-list-cntr
+  Then I should get error The Insurance Type field is required
+  And I enter random Text value at field insurance_type[0]
+  And I type 10000 data into insured_amount[0]
+  Then I clicked Save button of table insurance-list-cntr
+
+  @Data-test
+  Scenario: Test Cash Conversion Cycle
+  When I type blank data into credit_sales[0]
+  And I type 10000 data into credit_sales[0]
+  And I type blank data into credit_sales[1]
+  And I type 10000 data into credit_sales[1]
+  And I type blank data into credit_sales[2]
+  And I type 10000 data into credit_sales[2]
+  And I type blank data into accounts_receivable[0]
+  And I type 10000 data into accounts_receivable[0]
+  And I type blank data into accounts_receivable[1]
+  And I type 10000 data into accounts_receivable[1]
+  And I type blank data into accounts_receivable[2]
+  And I type 10000 data into accounts_receivable[2]
+  And I type blank data into inventory[0]
+  And I type 10000 data into inventory[0]
+  And I type blank data into inventory[1]
+  And I type 10000 data into inventory[1]
+  And I type blank data into inventory[2]
+  And I type 10000 data into inventory[2]
+  And I type blank data into cost_of_sales[0]
+  And I type 10000 data into cost_of_sales[0]
+  And I type blank data into cost_of_sales[1]
+  And I type 10000 data into cost_of_sales[1]
+  And I type blank data into cost_of_sales[2]
+  And I type 10000 data into cost_of_sales[2]
+  And I type blank data into accounts_payable[0]
+  And I type 10000 data into accounts_payable[0]
+  And I type blank data into accounts_payable[1]
+  And I type 10000 data into accounts_payable[1]
+  And I type blank data into accounts_payable[2]
+  And I type 10000 data into accounts_payable[2]
+  Then I clicked Save button of table cash-conversion-cntr
+  
