@@ -5,7 +5,7 @@ Feature: Creating scripts for Key manager
 	Given I am authenticated user
 	When I reach at Business Details 1 screen
 	
-	@TestData1
+	@TestKeyManager
 	Scenario: Adding new key manager
 	And I reach at Key managers screen
 	Then I click on link Add Key Manager
